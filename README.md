@@ -7,8 +7,8 @@ Over the past semester, I’ve explored how to turn **massive datasets into mean
 📊 Here’s what I built and what I learned:
 
 🔷 **📍 Twitter Data Analysis**  
-➡ *Visual:* Scatter plot showing tweet distribution across U.S.  
-➡ Insights on daily patterns, location-based behavior, and time-of-day tweet bursts.
+-> *Visual:* Scatter plot showing tweet distribution across U.S.  
+-> Insights on daily patterns, location-based behavior, and time-of-day tweet bursts.
 
 🔷 **🎬 MovieLens Ratings**  
 ➡ *Visual:* Pie chart of rating categories (Low, Medium, High) and bar chart of genres  
