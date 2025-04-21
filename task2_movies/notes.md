@@ -16,13 +16,7 @@ Explore user behavior, movie popularity, and rating patterns across time.
 **Key Columns:**
 - `movieId`, `title`, `genres`
 - `userId`, `rating`, `timestamp`
-
-**Preprocessing:**
-- Joined movie and ratings data
-- Converted timestamps to date
-- Extracted year and month of ratings
-- Categorized rating levels (Low, Medium, High)
-
+- 
 ---
 
 ## 🛠️ Key Steps
