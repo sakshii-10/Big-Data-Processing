@@ -7,20 +7,20 @@ Over the past semester, I’ve explored how to turn **massive datasets into mean
 📊 Here’s what I built and what I learned:
 
 🔷 **📍 Twitter Data Analysis**  
-➡️ *Visual:* Scatter plot showing tweet distribution across U.S.  
-✅ Insights on daily patterns, location-based behavior, and time-of-day tweet bursts.
+➡ *Visual:* Scatter plot showing tweet distribution across U.S.  
+➡ Insights on daily patterns, location-based behavior, and time-of-day tweet bursts.
 
 🔷 **🎬 MovieLens Ratings**  
-➡️ *Visual:* Pie chart of rating categories (Low, Medium, High) and bar chart of genres  
-✅ Discovered how users rate over time and which genres dominate.
+➡ *Visual:* Pie chart of rating categories (Low, Medium, High) and bar chart of genres  
+➡ Discovered how users rate over time and which genres dominate.
 
 🔷 **🚖 Chicago Taxi GraphFrames**  
-➡️ *Visual:* PageRank bar chart of top community areas + network graph showing connections  
-✅ Modeled mobility patterns as a graph and identified urban hubs.
+➡ *Visual:* PageRank bar chart of top community areas + network graph showing connections  
+➡ Modeled mobility patterns as a graph and identified urban hubs.
 
 🔷 **🧾 HDFS Logs with Structured Streaming**  
-➡️ *Visual:* Line chart of DataNode activity over time + filtered log table with timestamp  
-✅ Built a pipeline for real-time anomaly detection using watermarks and windowed operations.
+➡ *Visual:* Line chart of DataNode activity over time + filtered log table with timestamp  
+➡ Built a pipeline for real-time anomaly detection using watermarks and windowed operations.
 
 ---
 
