@@ -1,0 +1,392 @@
+++ id -u
++ myuid=1000770000
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 1000770000
++ uidentry='1000770000:x:1000770000:0:1000770000 user:/home/jboss:/sbin/nologin'
++ set -e
++ '[' -z '1000770000:x:1000770000:0:1000770000 user:/home/jboss:/sbin/nologin' ']'
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ sed 's/[^=]*=\(.*\)/\1/g'
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*' ']'
++ SPARK_CLASSPATH=':/opt/spark/jars/*:/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*'
++ '[' '' == 2 ']'
++ '[' '' == 3 ']'
++ '[' -n /opt/hadoop ']'
++ '[' -z '/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*' ']'
++ '[' -z ']'
++ case "$1" in
++ shift 1
++ CMD=("$SPARK_HOME/bin/spark-submit" --conf "spark.driver.bindAddress=$SPARK_DRIVER_BIND_ADDRESS" --deploy-mode client "$@")
++ exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.133.0.78 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class org.apache.spark.deploy.PythonRunner s3a://object-bucket-ec24578-dd245d22-d551-419d-9bc5-4c77d038ce84/spark-hs/spark-upload-d3b66749-64ff-414d-b2f0-c326f55f1ece/task4_complete.py
+Ivy Default Cache set to: /tmp
+The jars for the packages stored in: /tmp/jars
+:: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.hadoop#hadoop-aws added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-f79945ff-6212-4f1d-b71e-028e3c14f811;1.0
+	confs: [default]
+	found org.apache.hadoop#hadoop-aws;3.2.2 in central
+	found com.amazonaws#aws-java-sdk-bundle;1.11.563 in central
+downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2.jar ...
+	[SUCCESSFUL ] org.apache.hadoop#hadoop-aws;3.2.2!hadoop-aws.jar (31ms)
+downloading https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.563/aws-java-sdk-bundle-1.11.563.jar ...
+	[SUCCESSFUL ] com.amazonaws#aws-java-sdk-bundle;1.11.563!aws-java-sdk-bundle.jar (1287ms)
+:: resolution report :: resolve 1277ms :: artifacts dl 1322ms
+	:: modules in use:
+	com.amazonaws#aws-java-sdk-bundle;1.11.563 from central in [default]
+	org.apache.hadoop#hadoop-aws;3.2.2 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   2   |   2   |   0   ||   2   |   2   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-f79945ff-6212-4f1d-b71e-028e3c14f811
+	confs: [default]
+	2 artifacts copied, 0 already retrieved (127385kB/68ms)
+2025-04-10 13:28:19,216 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2025-04-10 13:28:21,669 INFO spark.SparkContext: Running Spark version 3.0.1
+2025-04-10 13:28:21,709 INFO resource.ResourceUtils: ==============================================================
+2025-04-10 13:28:21,710 INFO resource.ResourceUtils: Resources for spark.driver:
+
+2025-04-10 13:28:21,711 INFO resource.ResourceUtils: ==============================================================
+2025-04-10 13:28:21,711 INFO spark.SparkContext: Submitted application: StreamingHDFSLogs_Complete
+2025-04-10 13:28:21,781 INFO spark.SecurityManager: Changing view acls to: 1000770000,ec24578
+2025-04-10 13:28:21,782 INFO spark.SecurityManager: Changing modify acls to: 1000770000,ec24578
+2025-04-10 13:28:21,782 INFO spark.SecurityManager: Changing view acls groups to: 
+2025-04-10 13:28:21,782 INFO spark.SecurityManager: Changing modify acls groups to: 
+2025-04-10 13:28:21,782 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(1000770000, ec24578); groups with view permissions: Set(); users  with modify permissions: Set(1000770000, ec24578); groups with modify permissions: Set()
+2025-04-10 13:28:22,075 INFO util.Utils: Successfully started service 'sparkDriver' on port 7078.
+2025-04-10 13:28:22,109 INFO spark.SparkEnv: Registering MapOutputTracker
+2025-04-10 13:28:22,153 INFO spark.SparkEnv: Registering BlockManagerMaster
+2025-04-10 13:28:22,177 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2025-04-10 13:28:22,178 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2025-04-10 13:28:22,185 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2025-04-10 13:28:22,209 INFO storage.DiskBlockManager: Created local directory at /var/data/spark-e484b179-dcc4-4a69-9dc5-d642310a7008/blockmgr-44077786-b56e-4c7a-be71-513b7c8897b9
+2025-04-10 13:28:22,239 INFO memory.MemoryStore: MemoryStore started with capacity 2004.6 MiB
+2025-04-10 13:28:22,258 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2025-04-10 13:28:22,370 INFO util.log: Logging initialized @7548ms to org.sparkproject.jetty.util.log.Slf4jLog
+2025-04-10 13:28:22,457 INFO server.Server: jetty-9.4.z-SNAPSHOT; built: 2019-04-29T20:42:08.989Z; git: e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 1.8.0_332-b09
+2025-04-10 13:28:22,483 INFO server.Server: Started @7661ms
+2025-04-10 13:28:22,526 INFO server.AbstractConnector: Started ServerConnector@1505ac38{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2025-04-10 13:28:22,527 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2025-04-10 13:28:22,551 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@46326c2b{/jobs,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,553 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@36c5931{/jobs/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,554 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@46bb1f76{/jobs/job,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,555 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@15b3c4fa{/jobs/job/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,555 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ea5f4df{/stages,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,556 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@42f74727{/stages/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,556 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@116e4a8{/stages/stage,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,558 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@47fdea87{/stages/stage/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,558 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@a82afad{/stages/pool,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,559 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@105474c5{/stages/pool/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,559 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@38057981{/storage,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,560 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1bc58c5a{/storage/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,560 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@55f85e8{/storage/rdd,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,561 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b7cfaa4{/storage/rdd/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,562 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7d31cc46{/environment,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,563 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4d45277f{/environment/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,563 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@79d57e56{/executors,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,564 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@e5d225d{/executors/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,564 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@78fc6fbd{/executors/threadDump,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,566 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4930f475{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,575 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@34de4fc6{/static,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,575 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@543c856d{/,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,576 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@66f0c4b8{/api,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,577 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5df1215{/jobs/job/kill,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,578 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2d8376c2{/stages/stage/kill,null,AVAILABLE,@Spark}
+2025-04-10 13:28:22,580 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc:4040
+2025-04-10 13:28:22,613 INFO spark.SparkContext: Added JAR local:///opt/spark/jars/graphframes-0.8.2-spark3.0-s_2.12.jar at file:/opt/spark/jars/graphframes-0.8.2-spark3.0-s_2.12.jar with timestamp 1744291702612
+2025-04-10 13:28:22,713 INFO k8s.SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+2025-04-10 13:28:23,676 INFO k8s.ExecutorPodsAllocator: Going to request 2 executors from Kubernetes.
+2025-04-10 13:28:23,688 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7079.
+2025-04-10 13:28:23,689 INFO netty.NettyBlockTransferService: Server created on task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc:7079
+2025-04-10 13:28:23,691 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2025-04-10 13:28:23,702 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 13:28:23,707 INFO storage.BlockManagerMasterEndpoint: Registering block manager task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc:7079 with 2004.6 MiB RAM, BlockManagerId(driver, task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 13:28:23,712 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 13:28:23,714 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, task4-complete-1437c0961fe2efe4-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 13:28:23,745 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3fada97d{/metrics/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:24,059 INFO history.SingleEventLogFileWriter: Logging events to s3a://spark-hs-bkt-89306845-2a18-47bf-bc82-302765918961/logs-dir/spark-10c28a4f24024f2d960096bc40d1e2d4.inprogress
+2025-04-10 13:28:27,549 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 4096, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2025-04-10 13:28:28,193 INFO k8s.KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.132.82.254:37620) with ID 1
+2025-04-10 13:28:28,210 INFO k8s.KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.132.117.102:48572) with ID 2
+2025-04-10 13:28:28,298 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.132.82.254:46387 with 2.1 GiB RAM, BlockManagerId(1, 10.132.82.254, 46387, None)
+2025-04-10 13:28:28,307 INFO k8s.KubernetesClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+2025-04-10 13:28:28,308 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.132.117.102:46661 with 2.1 GiB RAM, BlockManagerId(2, 10.132.117.102, 46661, None)
+2025-04-10 13:28:28,540 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/opt/spark/work-dir/spark-warehouse').
+2025-04-10 13:28:28,540 INFO internal.SharedState: Warehouse path is 'file:/opt/spark/work-dir/spark-warehouse'.
+2025-04-10 13:28:28,559 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6f371e85{/SQL,null,AVAILABLE,@Spark}
+2025-04-10 13:28:28,559 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@440eaccc{/SQL/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:28,560 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4f4051e3{/SQL/execution,null,AVAILABLE,@Spark}
+2025-04-10 13:28:28,561 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5a7aff11{/SQL/execution/json,null,AVAILABLE,@Spark}
+2025-04-10 13:28:28,562 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2bce389e{/static/sql,null,AVAILABLE,@Spark}
+Using host: stream-emulator-hdfs.data-science-tools.svc.cluster.local
+Using port: 5552
+-------------------------------------------
+Batch: 0
+-------------------------------------------
++-----+---------+
+|value|timestamp|
++-----+---------+
++-----+---------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                           |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|Server is working:081109 203518 143 INFO dfs.DataNode$DataXceiver: Receiving block blk_-1608999687919862906 src: /10.250.19.102:54106 dest: /10.250.19.102:50010|null               |
+|081109 203519 143 INFO dfs.DataNode$DataXceiver: Receiving block blk_-1608999687919862906 src: /10.250.10.6:40524 dest: /10.250.10.6:50010                      |2008-11-09 20:35:19|
+|081109 203518 35 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /mnt/hadoop/mapred/system/job_200811092030_0001/job.jar. blk_-1608999687919862906      |2008-11-09 20:35:18|
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                         |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 145 INFO dfs.DataNode$DataXceiver: Receiving block blk_-1608999687919862906 src: /10.250.14.224:42420 dest: /10.250.14.224:50010|2008-11-09 20:35:19|
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                |timestamp          |
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 145 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for block blk_-1608999687919862906 terminating|2008-11-09 20:35:19|
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                |timestamp          |
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 145 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-1608999687919862906 terminating|2008-11-09 20:35:19|
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                       |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 145 INFO dfs.DataNode$PacketResponder: Received block blk_-1608999687919862906 of size 91178 from /10.250.10.6|2008-11-09 20:35:19|
++----------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                         |timestamp          |
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 145 INFO dfs.DataNode$PacketResponder: Received block blk_-1608999687919862906 of size 91178 from /10.250.19.102|2008-11-09 20:35:19|
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                |timestamp          |
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 147 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for block blk_-1608999687919862906 terminating|2008-11-09 20:35:19|
++---------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                         |timestamp          |
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 147 INFO dfs.DataNode$PacketResponder: Received block blk_-1608999687919862906 of size 91178 from /10.250.14.224|2008-11-09 20:35:19|
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 9
+-------------------------------------------
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                        |timestamp          |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.10.6:50010 is added to blk_-1608999687919862906 size 91178|2008-11-09 20:35:19|
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 10
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                           |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.251.111.209:50010 is added to blk_-1608999687919862906 size 91178|2008-11-09 20:35:19|
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 11
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                          |timestamp          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203519 31 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.14.224:50010 is added to blk_-1608999687919862906 size 91178|2008-11-09 20:35:19|
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 12
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                        |timestamp          |
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203520 142 INFO dfs.DataNode$DataXceiver: Receiving block blk_7503483334202473044 src: /10.251.215.16:55695 dest: /10.251.215.16:50010|2008-11-09 20:35:20|
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 13
+-------------------------------------------
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                        |timestamp          |
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203520 145 INFO dfs.DataNode$DataXceiver: Receiving block blk_7503483334202473044 src: /10.250.19.102:34232 dest: /10.250.19.102:50010|2008-11-09 20:35:20|
++---------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 14
+-------------------------------------------
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                      |timestamp          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203520 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /mnt/hadoop/mapred/system/job_200811092030_0001/job.split. blk_7503483334202473044|2008-11-09 20:35:20|
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 15
+-------------------------------------------
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                      |timestamp          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 143 INFO dfs.DataNode$DataXceiver: Received block blk_-1608999687919862906 src: /10.251.215.16:52002 dest: /10.251.215.16:50010 of size 91178|2008-11-09 20:35:21|
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 16
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                         |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 143 INFO dfs.DataNode$DataXceiver: Receiving block blk_-1608999687919862906 src: /10.251.215.16:52002 dest: /10.251.215.16:50010|2008-11-09 20:35:21|
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 17
+-------------------------------------------
++-------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                      |timestamp          |
++-------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 144 INFO dfs.DataNode$DataXceiver: Receiving block blk_7503483334202473044 src: /10.251.71.16:51590 dest: /10.251.71.16:50010|2008-11-09 20:35:21|
++-------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 18
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                         |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 145 INFO dfs.DataNode$DataXceiver: Receiving block blk_-3544583377289625738 src: /10.250.19.102:39325 dest: /10.250.19.102:50010|2008-11-09 20:35:21|
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 19
+-------------------------------------------
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                               |timestamp          |
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 145 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for block blk_7503483334202473044 terminating|2008-11-09 20:35:21|
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 20
+-------------------------------------------
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                         |timestamp          |
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 145 INFO dfs.DataNode$PacketResponder: Received block blk_7503483334202473044 of size 233217 from /10.251.215.16|2008-11-09 20:35:21|
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 21
+-------------------------------------------
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                               |timestamp          |
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 146 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for block blk_7503483334202473044 terminating|2008-11-09 20:35:21|
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 22
+-------------------------------------------
++-----------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                        |timestamp          |
++-----------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 146 INFO dfs.DataNode$PacketResponder: Received block blk_7503483334202473044 of size 233217 from /10.251.71.16|2008-11-09 20:35:21|
++-----------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 23
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                   |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 147 INFO dfs.DataNode$DataTransfer: 10.250.14.224:50010:Transmitted block blk_-1608999687919862906 to /10.251.215.16:50010|2008-11-09 20:35:21|
++----------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 24
+-------------------------------------------
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                      |timestamp          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 147 INFO dfs.DataNode$DataXceiver: Received block blk_-1608999687919862906 src: /10.250.14.224:35754 dest: /10.250.14.224:50010 of size 91178|2008-11-09 20:35:21|
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 25
+-------------------------------------------
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                         |timestamp          |
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 147 INFO dfs.DataNode$DataXceiver: Receiving block blk_-1608999687919862906 src: /10.250.14.224:35754 dest: /10.250.14.224:50010|2008-11-09 20:35:21|
++----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 26
+-------------------------------------------
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                               |timestamp          |
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 148 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_7503483334202473044 terminating|2008-11-09 20:35:21|
++--------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 27
+-------------------------------------------
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                         |timestamp          |
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 148 INFO dfs.DataNode$PacketResponder: Received block blk_7503483334202473044 of size 233217 from /10.250.19.102|2008-11-09 20:35:21|
++------------------------------------------------------------------------------------------------------------------------------+-------------------+
+
+-------------------------------------------
+Batch: 28
+-------------------------------------------
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|value                                                                                                                                                         |timestamp          |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+|081109 203521 19 INFO dfs.DataNode: 10.250.14.224:50010 Starting thread to transfer block blk_-1608999687919862906 to 10.251.215.16:50010, 10.251.71.193:50010|2008-11-09 20:35:21|
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+

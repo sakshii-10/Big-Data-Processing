@@ -1,0 +1,258 @@
+++ id -u
++ myuid=1000770000
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 1000770000
++ uidentry='1000770000:x:1000770000:0:1000770000 user:/home/jboss:/sbin/nologin'
++ set -e
++ '[' -z '1000770000:x:1000770000:0:1000770000 user:/home/jboss:/sbin/nologin' ']'
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ sed 's/[^=]*=\(.*\)/\1/g'
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*' ']'
++ SPARK_CLASSPATH=':/opt/spark/jars/*:/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*'
++ '[' '' == 2 ']'
++ '[' '' == 3 ']'
++ '[' -n /opt/hadoop ']'
++ '[' -z '/opt/hadoop/etc/hadoop:/opt/hadoop/share/hadoop/common/lib/*:/opt/hadoop/share/hadoop/common/*:/opt/hadoop/share/hadoop/hdfs:/opt/hadoop/share/hadoop/hdfs/lib/*:/opt/hadoop/share/hadoop/hdfs/*:/opt/hadoop/share/hadoop/yarn:/opt/hadoop/share/hadoop/yarn/lib/*:/opt/hadoop/share/hadoop/yarn/*:/opt/hadoop/share/hadoop/mapreduce/lib/*:/opt/hadoop/share/hadoop/mapreduce/*:/contrib/capacity-scheduler/*.jar:/opt/hadoop/share/hadoop/tools/lib/*' ']'
++ '[' -z ']'
++ case "$1" in
++ shift 1
++ CMD=("$SPARK_HOME/bin/spark-submit" --conf "spark.driver.bindAddress=$SPARK_DRIVER_BIND_ADDRESS" --deploy-mode client "$@")
++ exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.133.42.26 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class org.apache.spark.deploy.PythonRunner s3a://object-bucket-ec24578-dd245d22-d551-419d-9bc5-4c77d038ce84/spark-hs/spark-upload-d6d7890c-e2cf-4381-9fe9-59beecd6bb42/task4_complete.py
+Ivy Default Cache set to: /tmp
+The jars for the packages stored in: /tmp/jars
+:: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.hadoop#hadoop-aws added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-12e46e1c-d138-48fd-bfa7-820e43c7fadb;1.0
+	confs: [default]
+	found org.apache.hadoop#hadoop-aws;3.2.2 in central
+	found com.amazonaws#aws-java-sdk-bundle;1.11.563 in central
+downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2.jar ...
+	[SUCCESSFUL ] org.apache.hadoop#hadoop-aws;3.2.2!hadoop-aws.jar (22ms)
+downloading https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.563/aws-java-sdk-bundle-1.11.563.jar ...
+	[SUCCESSFUL ] com.amazonaws#aws-java-sdk-bundle;1.11.563!aws-java-sdk-bundle.jar (1239ms)
+:: resolution report :: resolve 1437ms :: artifacts dl 1263ms
+	:: modules in use:
+	com.amazonaws#aws-java-sdk-bundle;1.11.563 from central in [default]
+	org.apache.hadoop#hadoop-aws;3.2.2 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   2   |   2   |   0   ||   2   |   2   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-12e46e1c-d138-48fd-bfa7-820e43c7fadb
+	confs: [default]
+	2 artifacts copied, 0 already retrieved (127385kB/68ms)
+2025-04-10 14:18:06,095 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2025-04-10 14:18:08,527 INFO spark.SparkContext: Running Spark version 3.0.1
+2025-04-10 14:18:08,572 INFO resource.ResourceUtils: ==============================================================
+2025-04-10 14:18:08,574 INFO resource.ResourceUtils: Resources for spark.driver:
+
+2025-04-10 14:18:08,575 INFO resource.ResourceUtils: ==============================================================
+2025-04-10 14:18:08,575 INFO spark.SparkContext: Submitted application: StreamingHDFSLogs_Complete
+2025-04-10 14:18:08,660 INFO spark.SecurityManager: Changing view acls to: 1000770000,ec24578
+2025-04-10 14:18:08,660 INFO spark.SecurityManager: Changing modify acls to: 1000770000,ec24578
+2025-04-10 14:18:08,660 INFO spark.SecurityManager: Changing view acls groups to: 
+2025-04-10 14:18:08,660 INFO spark.SecurityManager: Changing modify acls groups to: 
+2025-04-10 14:18:08,661 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(1000770000, ec24578); groups with view permissions: Set(); users  with modify permissions: Set(1000770000, ec24578); groups with modify permissions: Set()
+2025-04-10 14:18:08,944 INFO util.Utils: Successfully started service 'sparkDriver' on port 7078.
+2025-04-10 14:18:08,977 INFO spark.SparkEnv: Registering MapOutputTracker
+2025-04-10 14:18:09,014 INFO spark.SparkEnv: Registering BlockManagerMaster
+2025-04-10 14:18:09,036 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2025-04-10 14:18:09,037 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2025-04-10 14:18:09,041 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2025-04-10 14:18:09,068 INFO storage.DiskBlockManager: Created local directory at /var/data/spark-ae5383a8-dfe5-45e4-a85a-dfce0698e0f1/blockmgr-0a16ba50-1da0-4b13-b83d-87df4a0c0dc3
+2025-04-10 14:18:09,097 INFO memory.MemoryStore: MemoryStore started with capacity 2004.6 MiB
+2025-04-10 14:18:09,116 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2025-04-10 14:18:09,234 INFO util.log: Logging initialized @7540ms to org.sparkproject.jetty.util.log.Slf4jLog
+2025-04-10 14:18:09,312 INFO server.Server: jetty-9.4.z-SNAPSHOT; built: 2019-04-29T20:42:08.989Z; git: e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 1.8.0_332-b09
+2025-04-10 14:18:09,335 INFO server.Server: Started @7642ms
+2025-04-10 14:18:09,384 INFO server.AbstractConnector: Started ServerConnector@444d7243{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2025-04-10 14:18:09,384 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2025-04-10 14:18:09,414 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5630b944{/jobs,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,417 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4e9f9f93{/jobs/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,417 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6b1118fc{/jobs/job,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,418 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b277fb2{/jobs/job/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,419 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@31898d31{/stages,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,420 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@617e06fb{/stages/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,420 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@168d489e{/stages/stage,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,421 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1540fa1c{/stages/stage/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,422 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@40e2f7a6{/stages/pool,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,423 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@176006a2{/stages/pool/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,423 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@43c1d9a8{/storage,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,424 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4590d66a{/storage/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,425 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56dcd809{/storage/rdd,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,425 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@53d4f483{/storage/rdd/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,426 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@12669fe4{/environment,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,426 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@547fa13a{/environment/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,427 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@c14da2{/executors,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,428 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@50560df3{/executors/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,428 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f223edf{/executors/threadDump,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,430 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5eef7ccf{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,440 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@637e5de2{/static,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,442 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@11e17110{/,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,443 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@54a594e9{/api,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,443 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4b53af7c{/jobs/job/kill,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,444 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@68e49d5d{/stages/stage/kill,null,AVAILABLE,@Spark}
+2025-04-10 14:18:09,447 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc:4040
+2025-04-10 14:18:09,484 INFO spark.SparkContext: Added JAR local:///opt/spark/jars/graphframes-0.8.2-spark3.0-s_2.12.jar at file:/opt/spark/jars/graphframes-0.8.2-spark3.0-s_2.12.jar with timestamp 1744294689483
+2025-04-10 14:18:09,591 INFO k8s.SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+2025-04-10 14:18:10,534 INFO k8s.ExecutorPodsAllocator: Going to request 2 executors from Kubernetes.
+2025-04-10 14:18:10,546 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7079.
+2025-04-10 14:18:10,546 INFO netty.NettyBlockTransferService: Server created on task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc:7079
+2025-04-10 14:18:10,548 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2025-04-10 14:18:10,556 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 14:18:10,561 INFO storage.BlockManagerMasterEndpoint: Registering block manager task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc:7079 with 2004.6 MiB RAM, BlockManagerId(driver, task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 14:18:10,566 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 14:18:10,567 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, task4-complete-31c1d6962010854a-driver-svc.data-science-ec24578.svc, 7079, None)
+2025-04-10 14:18:10,589 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@683afd9f{/metrics/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:10,935 INFO history.SingleEventLogFileWriter: Logging events to s3a://spark-hs-bkt-89306845-2a18-47bf-bc82-302765918961/logs-dir/spark-1873bb641e604a3288fb81da865e60d0.inprogress
+2025-04-10 14:18:14,383 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 4096, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2025-04-10 14:18:15,053 INFO k8s.KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.133.0.91:46262) with ID 1
+2025-04-10 14:18:15,166 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.133.0.91:34909 with 2.1 GiB RAM, BlockManagerId(1, 10.133.0.91, 34909, None)
+2025-04-10 14:18:15,247 INFO k8s.KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.132.117.140:54830) with ID 2
+2025-04-10 14:18:15,260 INFO k8s.KubernetesClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+2025-04-10 14:18:15,352 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.132.117.140:36625 with 2.1 GiB RAM, BlockManagerId(2, 10.132.117.140, 36625, None)
+2025-04-10 14:18:15,460 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/opt/spark/work-dir/spark-warehouse').
+2025-04-10 14:18:15,460 INFO internal.SharedState: Warehouse path is 'file:/opt/spark/work-dir/spark-warehouse'.
+2025-04-10 14:18:15,475 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3fc7b26c{/SQL,null,AVAILABLE,@Spark}
+2025-04-10 14:18:15,475 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2d81ca10{/SQL/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:15,476 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7bc0bd26{/SQL/execution,null,AVAILABLE,@Spark}
+2025-04-10 14:18:15,477 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19c8e74b{/SQL/execution/json,null,AVAILABLE,@Spark}
+2025-04-10 14:18:15,478 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@395c387f{/static/sql,null,AVAILABLE,@Spark}
+Using host: stream-emulator-hdfs.data-science-tools.svc.cluster.local
+Using port: 5552
+-------------------------------------------
+Batch: 0
+-------------------------------------------
++--------+----------------+
+|hostname|block_operations|
++--------+----------------+
++--------+----------------+
+
+Processed batch 1
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++--------------+----------------+
+|hostname      |block_operations|
++--------------+----------------+
+|              |8               |
+|10.250.14.224 |7               |
+|10.250.19.102 |5               |
+|10.251.215.16 |4               |
+|10.250.10.6   |3               |
+|10.251.71.16  |2               |
+|10.251.111.209|1               |
++--------------+----------------+
+
+Processed batch 2
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++--------------+----------------+
+|hostname      |block_operations|
++--------------+----------------+
+|              |13              |
+|10.250.14.224 |8               |
+|10.250.19.102 |7               |
+|10.251.215.16 |6               |
+|10.250.11.100 |4               |
+|10.251.197.226|3               |
+|10.250.10.6   |3               |
+|10.251.71.16  |3               |
+|10.251.111.209|2               |
+|10.251.39.179 |1               |
+|10.251.71.193 |1               |
+|10.250.7.244  |1               |
+|10.250.14.196 |1               |
+|10.251.106.10 |1               |
++--------------+----------------+
+
+Processed batch 3
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++--------------+----------------+
+|hostname      |block_operations|
++--------------+----------------+
+|              |16              |
+|10.251.215.16 |12              |
+|10.250.19.102 |8               |
+|10.250.14.224 |8               |
+|10.251.197.226|5               |
+|10.250.11.100 |4               |
+|10.251.74.79  |3               |
+|10.251.71.16  |3               |
+|10.250.7.244  |3               |
+|10.250.10.6   |3               |
+|10.250.14.196 |3               |
+|10.251.111.209|2               |
+|10.251.39.179 |2               |
+|10.251.107.19 |1               |
+|10.251.71.193 |1               |
+|10.251.89.155 |1               |
+|10.251.106.10 |1               |
++--------------+----------------+
+
+Processed batch 4
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++--------------+----------------+
+|hostname      |block_operations|
++--------------+----------------+
+|              |16              |
+|10.251.215.16 |13              |
+|10.250.14.224 |11              |
+|10.250.19.102 |8               |
+|10.250.11.100 |8               |
+|10.251.197.226|7               |
+|10.250.10.6   |7               |
+|10.251.39.179 |5               |
+|10.251.107.19 |4               |
+|10.251.111.209|3               |
+|10.251.71.16  |3               |
+|10.250.7.244  |3               |
+|10.250.14.196 |3               |
+|10.251.74.79  |3               |
+|10.251.106.10 |1               |
+|10.251.31.5   |1               |
+|10.251.89.155 |1               |
+|10.251.71.193 |1               |
++--------------+----------------+
+
+Processed batch 5
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++--------------+----------------+
+|hostname      |block_operations|
++--------------+----------------+
+|10.251.197.226|18              |
+|              |16              |
+|10.251.215.16 |14              |
+|10.250.11.100 |13              |
+|10.250.14.224 |11              |
+|10.250.19.102 |8               |
+|10.250.10.6   |7               |
+|10.251.39.179 |6               |
+|10.251.107.19 |6               |
+|10.251.74.79  |4               |
+|10.251.31.5   |3               |
+|10.251.111.209|3               |
+|10.250.7.244  |3               |
+|10.251.71.16  |3               |
+|10.250.14.196 |3               |
+|10.251.106.10 |1               |
+|10.251.89.155 |1               |
+|10.251.71.193 |1               |
++--------------+----------------+
+
+Processed batch 6
