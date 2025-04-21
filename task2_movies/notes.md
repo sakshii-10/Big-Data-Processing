@@ -3,8 +3,6 @@
 **Objective:**  
 Explore user behavior, movie popularity, and rating patterns across time.
 
----
-
 **Dataset:**
 
 **Name:** MovieLens 20M Dataset  
@@ -16,18 +14,14 @@ Explore user behavior, movie popularity, and rating patterns across time.
 **Key Columns:**
 - `movieId`, `title`, `genres`
 - `userId`, `rating`, `timestamp`
-- 
----
 
-## 🛠️ Key Steps
+**🛠️ Key Steps:**
 
 - Analyzed genre frequency and rating distribution
 - Grouped ratings by time and genre
 - Visualized with pie and bar charts
 
----
-
-## 🧰 Tools Used
+**🧰 Tools Used:**
 
 - PySpark
 - SQL functions (groupBy, join)
