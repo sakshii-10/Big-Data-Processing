@@ -1,6 +1,6 @@
 # Task 1 – Twitter Geo-Spatial Analysis
 
-**Objective:**  
+** Objective: **  
 Analyze geo-tagged tweets to identify regional and time-based tweet patterns.
 
 **Dataset:**
@@ -14,14 +14,13 @@ Analyze geo-tagged tweets to identify regional and time-based tweet patterns.
 - `timestamp`: Tweet creation time (Unix format)
 - `timezone`: Timezone offset
 
-
-** 🛠️ Key Steps:**  
+** 🛠️ Key Steps: **  
 - Loaded tweet dataset with PySpark.
 - Extracted hour and weekday from timestamp.
 - Categorized time of day: Morning, Afternoon, Evening, Night.
 - Visualized tweet density by region and hour.
 
-** 🧰 Tools Used:**  
+** 🧰 Tools Used: **  
 - PySpark
 - Matplotlib
 - Pandas (for plotting)
