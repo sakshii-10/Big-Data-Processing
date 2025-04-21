@@ -16,7 +16,7 @@ Model and analyze city-wide mobility patterns using graph-based methods.
 - `Pickup Centroid Latitude/Longitude`
 - `Dropoff Centroid Latitude/Longitude`
 
-**Key Steps:**
+**🛠️ Key Steps:**
 
 - Created graph using GraphFrames
 - Applied PageRank and BFS for shortest paths
